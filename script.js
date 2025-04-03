@@ -49,7 +49,10 @@ function renderQuestions() {
       if (userAnswers[i] === choice) {
         choiceElement.checked = true;
       }
-      choiceElement.addEventListener("change", () => saveAnswer(i, choice));
+      choiceElement.addEventListener("change", () => {
+		  saveAnswer(i, choice);
+		  choiceElement.checked = true;
+	  });
       
       const label = document.createElement("label");
       label.appendChild(choiceElement);
