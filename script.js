@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const savedProgress = JSON.parse(sessionStorage.getItem(progressKey)) || {};
         savedProgress[questionIndex] = answer;
         sessionStorage.setItem(progressKey, JSON.stringify(savedProgress));
+        console.log("Saved Progress:", savedProgress); // Debugging
     }
 
     function calculateScore() {
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const finalScore = calculateScore();
         scoreDisplay.innerText = `Your score is ${finalScore} out of 5.`;
         localStorage.setItem(scoreKey, finalScore);
+        console.log("Stored Score:", finalScore); // Debugging
     }
 
     function loadFinalScore() {
@@ -67,4 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submitButton.addEventListener("click", submitQuiz);
     loadProgress();
     loadFinalScore();
+
+    // Debugging: Ensure saved progress is correctly retrieved
+    console.log("Loaded Progress:", JSON.parse(sessionStorage.getItem(progressKey)));
 });
